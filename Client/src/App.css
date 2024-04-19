@@ -1,0 +1,47 @@
+body {
+  background-image: url("https://wallpaperaccess.com/full/1311136.jpg");
+  background-size: cover;
+}
+
+header {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  text-align: center;
+  font-style: normal;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 3rem;
+  color: white;
+  -webkit-text-stroke: 1px rgb(46, 46, 46);
+}
+
+hr {
+  height: 2px;
+  background-color: rgba(28, 28, 28, 0.484);
+}
+
+.hostJoinCard {
+  border: 2px dashed black;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  margin: 20px;
+  filter: blur(10%);
+  backdrop-filter: blur(5px);
+}
+
+.joinOption {
+  width: 71%;
+  height: 10%;
+  margin: 2% auto;
+  border-radius: 25px;
+  border: 2px solid red;
+  background-color: black;
+}
+
+.optionCircle {
+  width: 10%;
+  height: 200%;
+  border-radius: 40%;
+  background-color: aqua;
+}
