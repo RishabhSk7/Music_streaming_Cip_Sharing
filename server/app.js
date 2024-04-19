@@ -8,7 +8,6 @@ const axios = require('axios');
 app.use(cors());
 app.use(express.json());
 const PORT = 5000; // Port number for your Express server
-const API = "AIzaSyCP1E_pix0sbXmOxTJwAenbUh980VckQq0";
 
 async function getVideoIds(playlistId, apiKey) {
      try {
