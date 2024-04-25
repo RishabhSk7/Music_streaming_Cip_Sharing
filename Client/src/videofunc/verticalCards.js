@@ -43,7 +43,7 @@ const NextCard = ({ id, change }) => {
             params: {
                 part: 'snippet',
                 id: id,
-                key: 'AIzaSyCP1E_pix0sbXmOxTJwAenbUh980VckQq0',
+                key: 'Enter_Your_API_key',
             },
         })
             .then(response => {
