@@ -51,7 +51,7 @@ async function getVideoIds(playlistId, apiKey) {
 
 // Usage example
 // const playlistId = 'PL2ZWRJfziNYptCt8a0BlRUrwXTINBzSC9';
-const apiKey = "AIzaSyCP1E_pix0sbXmOxTJwAenbUh980VckQq0";    /* not uploading it to github */
+const apiKey = "Enter_Your_API_KEY";    /* not uploading it to github */
 
 // Define a route to handle GET requests for /api/data
 app.post('/api/data', (req, res) => {
