@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app="videoApp">
+
+<head>
+    <title>Video Loader</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("https://wallpaperaccess.com/full/1311136.jpg");
+            background-size: cover;
+        }
+
+        header {
+            font-family: "Press Start 2P", system-ui;
+            font-weight: 400;
+            text-align: center;
+            font-style: normal;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            font-size: 3rem;
+            color: white;
+            -webkit-text-stroke: 1px rgb(46, 46, 46);
+            }
+
+        .video-card {
+            width: 450px;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .video-card .caption {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .fullscreen-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        hr {
+            margin: 20px;
+            border-radius: 25px;
+            border-top: 4px solid #ccc;
+        }
+    </style>
+    </head>
+    
+    <body ng-controller="VideoController">
+        <div style="display: flex; flex-direction: column; min-height: 100vh">
+            <header>
+                Stream. Play. Share.
+            </header>
+            <hr />
+            <div class="container">
+                <div ng-repeat="video in videos" class="video-card">
+                    <div class="card">
+                        <div class="card-image">
+                            <video ng-src="{{video.src}}" controls></video>
+                            <span class="card-title">{{video.caption}}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{video.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    </style>
+</head>
+
+<script>
+    var app = angular.module('videoApp', []);
+
+    app.controller('VideoController', function ($scope, $http) {
+        // Function to get the number of videos from the server
+        $http.get('http://127.0.0.1:8000/count')
+            .then(function (response) {
+                const videoCount = response.data.ids;
+                 
+
+                // Array to store fetched videos
+                $scope.videos = [];
+
+                // Function to fetch videos one by one
+                function fetchVideos(index) {
+                    console.log("HERE");
+                    if (index < videoCount.length) {
+                        $http.post('http://127.0.0.1:8000/getVideo', { id: videoCount[index] }, { responseType: 'blob' })
+                            .then(function (response) {
+                                var videoBlob = response.data;
+                                console.log(videoBlob);
+                                var videoUrl = URL.createObjectURL(videoBlob);
+                                console.log(videoUrl);
+                                var video = {
+                                    src: videoUrl
+                                };
+                                $scope.videos.push(video);
+                                fetchVideos(index + 1); // Fetch next video
+                            }).catch(error => {
+                                console.error('Error recieving  file:', error);
+                            });
+                    }
+                }
+
+                // Start fetching videos
+                fetchVideos(0);
+            }).catch(error => {
+                console.error('Error seding rquest:', error);
+            });
+    });
+
+</script>
+
+</html>
