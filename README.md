@@ -1,70 +1,123 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sync & Snippet
 
-## Available Scripts
+Ever felt the need to vibe to a playlist with your friends? Or share a clip of epic gameplay in midst of a gaming session?
+Worry not, Sync and Snippet is there for you!!
 
-In the project directory, you can run:
 
-### `npm start`
+## Authors
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [@RishabhSk7](https://github.com/RishabhSk7)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![AngularJS](https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![ExpressJS](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
-### `npm run build`
+## Run Locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  git clone https://github.com/RishabhSk7/Music_streaming_Cip_Sharing
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Go to the project directory
 
-### `npm run eject`
+```bash
+  cd Music_streaming_Cip_Sharing
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To start the Client:
+ - First add API key to Client/src/Videofunc/verticalCards.js:46
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ - start the client
 
-## Learn More
+```bash
+  cd Client
+  npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Do not close this terminal.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To start the server(assuming you're in client directory):
 
-### Code Splitting
+-first in the server directory, create a ".env" file with following params:
+| Parameter | Description                       |
+| :-------- | :-------------------------------- |
+| `PORT`    | **Required**. PORT FOR THE SERVER TO RUN |
+| `MONGOURL`    | **Required** <String>  Mongodb Database url |
+| `API`    | **Required**. <String> Google API key |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+cd ..
+cd server
+npm start
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Server API References
 
-### Making a Progressive Web App
+#### Get IDs from youtube playlist
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```http
+  POST /api/data
+```
 
-### Advanced Configuration
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `playlist_URL` | `string` | **Required**. The playlist url |  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Upload a video to database
 
-### Deployment
+```http
+  POST /upload
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `file`      | `video/*` | **Required**. A video media file. |
 
-### `npm run build` fails to minify
+#### Get the angularJS page to show all videos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```http
+  Get /showVideos
+```
+
+#### Get IDs of videos in database
+```http
+  POST /count
+```
+
+#### Get a video from database
+
+```http
+  POST /getVideo
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `String` | **Required**. ID of video to fetch from database. |
+
+#### Get name of video file from  database
+```http
+  POST /getVideoTitle
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `String` | **Required**. ID of video to get name from database. |
+
+## Contributing
+
+Please create an issue with feature request before Contributing to this project.

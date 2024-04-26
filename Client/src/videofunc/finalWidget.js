@@ -20,7 +20,7 @@ const FinalWidget = (yids) => {
     // sample url: https://www.youtube.com/watch?v=w4TNGhSj2tc&list=PL6NdkXsPL07KN01gH2vucrHCEyyNmVEx4
     const addPlaylist = () => {
         if (inputValue.match(/\?v=([^&]+)&list=([^&]+)/)) {
-        fetch('http://localhost:8000/api/data', {
+        fetch('http://127.0.0.1:8000/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

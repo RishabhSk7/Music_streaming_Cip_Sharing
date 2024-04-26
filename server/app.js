@@ -20,7 +20,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 const MONGOURL = process.env.MONGOURL;
-const API = process.env.API;      //ps use 127.0.0.1 instead of localhost
+const API = process.env.API;          //ps use 127.0.0.1 instead of localhost
 
 const storage = new GridFsStorage({url:"mongodb://127.0.0.1:27017/WebtechProject", 
 file: (req, file) => {
@@ -52,7 +52,7 @@ async function getVideoIds(playlistId, apiKey) {
 
 // Usage example
 // const playlistId = 'PL2ZWRJfziNYptCt8a0BlRUrwXTINBzSC9';
-const apiKey =API;    /* not uploading it to github */
+const apiKey = API;    /* not uploading it to github */
 
 // Define a route to handle GET requests for /api/data
 app.post('/api/data', (req, res) => {
@@ -111,6 +111,7 @@ app.get('/count', async (req, res) => {
           const collection = storage.db.collection('fs.files');
           const documents = await collection.find({}, { _id: 1 }).toArray();
           const ids = documents.map(doc => doc._id);
+          console.log({ids});
           res.json({ ids });
      } catch (error) {
           console.error('Error:', error);
