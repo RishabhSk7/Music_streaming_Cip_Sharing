@@ -39,9 +39,6 @@ Install dependencies
 ```
 
 To start the Client:
- - First add API key to Client/src/Videofunc/verticalCards.js:46
-
- - start the client
 
 ```bash
   cd Client
@@ -51,14 +48,6 @@ To start the Client:
 Do not close this terminal.
 
 To start the server(assuming you're in client directory):
-
--first in the server directory, create a ".env" file with following params:
-| Parameter | Description                       |
-| :-------- | :-------------------------------- |
-| `PORT`    | **Required**. PORT FOR THE SERVER TO RUN |
-| `MONGOURL`    | **Required** <String>  Mongodb Database url |
-| `API`    | **Required**. <String> Google API key |
-
 ```
 cd ..
 cd server
@@ -117,6 +106,17 @@ npm start
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `String` | **Required**. ID of video to get name from database. |
+
+## Screenshots
+
+#### Home Screen without Playlist
+![Home Screen without playlist](https://raw.githubusercontent.com/RishabhSk7/Music_streaming_Cip_Sharing/main/ScreenShots/Homepage_noplaylist.png)
+
+#### Home Screen with Playlist
+![Home Screen with playlist](https://raw.githubusercontent.com/RishabhSk7/Music_streaming_Cip_Sharing/main/ScreenShots/HomePage_withPLaylist.png)
+
+#### Show all videos Page
+![Show all videos page](https://raw.githubusercontent.com/RishabhSk7/Music_streaming_Cip_Sharing/main/ScreenShots/ShowAllVideosPage.png)
 
 ## Contributing
 
