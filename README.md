@@ -59,7 +59,7 @@ npm start
 
 #### Get IDs from youtube playlist
 
-```http
+```
   POST /api/data
 ```
 
@@ -69,7 +69,7 @@ npm start
 
 #### Upload a video to database
 
-```http
+```
   POST /upload
 ```
 
@@ -79,18 +79,18 @@ npm start
 
 #### Get the angularJS page to show all videos
 
-```http
+```
   Get /showVideos
 ```
 
 #### Get IDs of videos in database
-```http
+```
   POST /count
 ```
 
 #### Get a video from database
 
-```http
+```
   POST /getVideo
 ```
 
@@ -99,7 +99,7 @@ npm start
 | `id`      | `String` | **Required**. ID of video to fetch from database. |
 
 #### Get name of video file from  database
-```http
+```
   POST /getVideoTitle
 ```
 
